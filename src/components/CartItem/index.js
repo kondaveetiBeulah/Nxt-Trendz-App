@@ -10,24 +10,20 @@ const CartItem = props => (
     {value => {
       const {
         removeCartItem,
-        decrementCartItemQuantity,
         incrementCartItemQuantity,
+        decrementCartItemQuantity,
       } = value
       const {cartItemDetails} = props
       const {id, title, brand, quantity, price, imageUrl} = cartItemDetails
-
       const onClickDecrement = () => {
         decrementCartItemQuantity(id)
       }
-
       const onClickIncrement = () => {
         incrementCartItemQuantity(id)
       }
-
       const onRemoveCartItem = () => {
         removeCartItem(id)
       }
-
       const totalPrice = price * quantity
 
       return (
@@ -42,8 +38,8 @@ const CartItem = props => (
               <button
                 type="button"
                 className="quantity-controller-button"
+                testid="minus"
                 onClick={onClickDecrement}
-                data-testid="minus"
               >
                 <BsDashSquare color="#52606D" size={12} />
               </button>
@@ -51,14 +47,14 @@ const CartItem = props => (
               <button
                 type="button"
                 className="quantity-controller-button"
+                testid="plus"
                 onClick={onClickIncrement}
-                data-testid="plus"
               >
                 <BsPlusSquare color="#52606D" size={12} />
               </button>
             </div>
             <div className="total-price-remove-container">
-              <p className="cart-total-price">Rs {totalPrice}/- </p>
+              <p className="cart-total-price">Rs {totalPrice}/-</p>
               <button
                 className="remove-button"
                 type="button"
@@ -70,9 +66,9 @@ const CartItem = props => (
           </div>
           <button
             className="delete-button"
-            data-testid="remove"
             type="button"
             onClick={onRemoveCartItem}
+            testid="remove"
           >
             <AiFillCloseCircle color="#616E7C" size={20} />
           </button>
